@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=600" />
+  <title>kaji card</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+      background: #e7e5e4;
+      color: #1c1917;
+    }
+    .shell {
+      width: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    header {
+      background: #06c755;
+      color: #fff;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+    }
+    .sub {
+      font-weight: 500;
+      font-size: 13px;
+      opacity: 0.95;
+      margin-top: 4px;
+    }
+    main {
+      background: linear-gradient(160deg, #8c9cad 0%, #7a8a9c 100%);
+      padding: 16px 14px 20px;
+      min-height: 120px;
+    }
+    .pill {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 12px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.15);
+      color: #fff;
+      font-size: 12px;
+    }
+    .bubble {
+      background: #fff;
+      border-radius: 16px;
+      border-top-left-radius: 4px;
+      padding: 14px 16px;
+      font-size: 15px;
+      line-height: 1.65;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="shell" role="document">
+    <header>
+      <div>{{HEADER_TITLE}}</div>
+      <div class="sub">{{HEADER_SUB}}</div>
+    </header>
+    <main>
+      <span class="pill">{{DATE_LABEL}}</span>
+      <div class="bubble">{{BODY_HTML}}</div>
+    </main>
+  </div>
+</body>
+</html>
