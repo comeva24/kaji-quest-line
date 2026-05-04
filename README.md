@@ -15,9 +15,9 @@ Google スプレッドシート → HTML（Playwright）→ `docs/*.jpg` → Git
 | `SPREADSHEET_ID` | スプレッドシート ID（例: `1B8M8gRxq8njy3lYztdnG38jGqSE0_ich`） |
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE チャネルアクセストークン |
 | `LINE_TO_USER_ID` | 配信先の userId |
-| `SHEETS_RANGE`（任意） | 読み取りレンジの A1 記法。未設定時は `scripts/build.mjs` のデフォルト `'担当カレンダー・ポイント表'!A1:I100` を使用。 |
+| `SHEETS_RANGE`（任意） | 読み取りレンジの A1 記法。未設定時は `scripts/build.mjs` のデフォルト `'担当カレンダー'!A1:I100` を使用。 |
 
-## スプレッドシートの形（シート名: `担当カレンダー・ポイント表`）
+## スプレッドシートの形（シート名: `担当カレンダー`、ブックの 1 枚目）
 
 スクリプトは **JST の当日** に一致する行を探し、その日の **D〜I 列（クエスト担当）** をカード本文にします。
 

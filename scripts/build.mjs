@@ -13,7 +13,7 @@ const templatePath = path.join(root, "templates", "card.html");
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "";
 const SHEETS_RANGE =
   (process.env.SHEETS_RANGE && String(process.env.SHEETS_RANGE).trim()) ||
-  "'担当カレンダー・ポイント表'!A1:I100";
+  "'担当カレンダー'!A1:I100";
 const MOCK = process.env.MOCK_SHEETS === "1" || !process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 
 /** @typedef {{ month: number, day: number, weekdayLabel: string }} JstToday */
