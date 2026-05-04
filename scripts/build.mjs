@@ -11,9 +11,10 @@ const docsDir = path.join(root, "docs");
 const templatePath = path.join(root, "templates", "card.html");
 
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "";
+/** 1枚目のシート「担当カレンダー」全体の先頭ブロック（A1:I100） */
+const DEFAULT_SHEETS_RANGE = "'担当カレンダー'!A1:I100";
 const SHEETS_RANGE =
-  (process.env.SHEETS_RANGE && String(process.env.SHEETS_RANGE).trim()) ||
-  "'担当カレンダー'!A1:I100";
+  (process.env.SHEETS_RANGE && String(process.env.SHEETS_RANGE).trim()) || DEFAULT_SHEETS_RANGE;
 const MOCK = process.env.MOCK_SHEETS === "1" || !process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 
 /** @typedef {{ month: number, day: number, weekdayLabel: string }} JstToday */
