@@ -8,9 +8,8 @@ import { google } from "googleapis";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
-const reportToolRoot = path.join(root, "..");
 const docsDir = path.join(root, "docs");
-const templatePath = path.join(reportToolRoot, "output", "kaji-quest-line-today.html");
+const templatePath = path.join(root, "output", "kaji-quest-line-today.html");
 const avatarPath = path.join(root, "assets", "avatar.png");
 
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "";
