@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>家事クエスト｜今日のお知らせ（LINE画像化用）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            maru: ['"M PLUS Rounded 1c"', "Hiragino Maru Gothic ProN", "Yu Gothic", "sans-serif"],
+          },
+          colors: {
+            line: { header: "#06C755", chatbg: "#8C9CAD", bubble: "#FFFFFF" },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-maru overflow-x-auto bg-stone-200 text-stone-800 antialiased py-6">
+  <!-- 600px 固定幅（LINE 画像化想定）。{{PLACEHOLDER}} は scripts/build.mjs が差し替え -->
+  <div
+    id="line-card"
+    class="mx-auto flex w-[600px] max-w-[600px] min-w-[600px] flex-col overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 bg-line-chatbg [background-image:radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.06)_0%,transparent_45%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.05)_0%,transparent_40%)]"
+    role="document"
+    aria-label="家事クエスト今日の通知"
+  >
+    <header
+      class="flex min-h-[52px] shrink-0 items-center gap-2 bg-line-header px-3 py-1 text-white shadow-md"
+      role="banner"
+    >
+      <div class="rounded-lg p-2 text-white/90" aria-hidden="true">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+      <div class="min-w-0 flex-1 py-0.5">
+        <p class="truncate text-center text-base font-bold leading-tight">{{HEADER_TITLE}}</p>
+        <p class="truncate text-center text-sm font-normal text-white/95">{{HEADER_SUB}}</p>
+      </div>
+      <div class="rounded-lg p-2 text-white/90" aria-hidden="true">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+      </div>
+    </header>
+
+    <main class="flex flex-col gap-4 px-3 py-4 pb-6" aria-label="トーク">
+      <div class="flex justify-center">
+        <p class="inline-flex rounded-full bg-black/15 px-3 py-1.5 text-center text-xs font-medium tracking-wide text-white/95">
+          {{DATE_PILL}}
+        </p>
+      </div>
+
+      <article class="relative max-w-full">
+        <p class="mb-1 pl-[calc(100px+0.75rem)] text-sm text-white/95 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]">家事クエスト</p>
+        <div class="relative min-w-0">
+          <div
+            class="absolute left-0 top-1 z-20 h-[100px] w-[100px] overflow-hidden rounded-full bg-black shadow-md ring-2 ring-white/25"
+          >
+            <img
+              src="{{AVATAR_DATA_URI}}"
+              alt=""
+              width="400"
+              height="400"
+              class="block h-full w-full object-contain object-center"
+              decoding="async"
+            />
+          </div>
+          <div
+            class="rounded-2xl rounded-tl-sm bg-line-bubble py-3.5 pl-[calc(100px+0.75rem)] pr-3.5 text-[15px] leading-relaxed shadow-md"
+          >
+            <div class="flex items-start gap-2.5">
+              <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-600">
+                <i data-lucide="clipboard-list" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <div class="min-w-0">
+                <p class="text-lg font-bold leading-snug text-stone-900">{{BUBBLE_TITLE}}</p>
+                <p class="mt-2 text-[15px] leading-relaxed text-stone-500">{{BUBBLE_DESC}}</p>
+              </div>
+            </div>
+
+            <div class="mt-4 space-y-4 border-t border-stone-200/80 pt-4">
+              {{TASK_BODY_HTML}}
+            </div>
+
+            <div class="mt-4 border-t border-stone-100 pt-2.5">
+              <p class="max-w-prose text-sm leading-relaxed text-stone-600">
+                ※夕飯担当が未決定の日は、その行だけ別メッセージでお知らせする想定です。
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-1.5 pl-[calc(100px+0.75rem)] text-xs tabular-nums text-white/90">
+          <time datetime="{{TIME_DATETIME}}">{{TIME_LABEL}}</time>
+        </p>
+      </article>
+
+      <article class="max-w-full">
+        <div class="min-w-0 space-y-2">
+          <div
+            class="pointer-events-none select-none overflow-hidden rounded-xl bg-white shadow-md ring-1 ring-black/5"
+            aria-hidden="true"
+          >
+            <div class="border-b border-stone-100 px-4 py-3.5 text-center text-[15px] font-bold text-[#06C755]">詳細をアプリで見る</div>
+            <div class="px-4 py-3.5 text-center text-[15px] font-semibold text-stone-700">クエストに手を挙げる</div>
+          </div>
+          <p class="px-3 text-center text-xs text-white/90">ボタンは装飾のみ</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="border-t border-black/10 bg-white px-3 py-2.5" aria-hidden="true">
+      <div class="flex items-end gap-2.5 opacity-70">
+        <div class="shrink-0 rounded-full p-2 text-stone-400">＋</div>
+        <div class="flex min-h-[44px] flex-1 items-center rounded-full border border-stone-200 bg-stone-50 px-4 text-[15px] text-stone-500">
+          メッセージを入力
+        </div>
+        <div class="shrink-0 text-[15px] font-semibold text-stone-400">送信</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
