@@ -1,6 +1,5 @@
 const BASE_URL = (process.env.BASE_URL || "https://comeva24.github.io/kaji-quest-line").replace(/\/$/, "");
 const TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN || "";
-const TO = process.env.LINE_TO_USER_ID || "";
 
 const original = `${BASE_URL}/today.jpg`;
 const preview = `${BASE_URL}/today_preview.jpg`;
@@ -28,16 +27,10 @@ async function postLineMessage(endpoint, body) {
 }
 
 async function main() {
-  if (!TOKEN || !TO) {
-    console.error("Missing LINE_CHANNEL_ACCESS_TOKEN or LINE_TO_USER_ID");
+  if (!TOKEN) {
+    console.error("Missing LINE_CHANNEL_ACCESS_TOKEN");
     process.exit(1);
   }
-  await postLineMessage("https://api.line.me/v2/bot/message/push", {
-    to: TO,
-    messages,
-  });
-
-  console.log("LINE push OK:", original);
   await postLineMessage("https://api.line.me/v2/bot/message/broadcast", {
     messages,
   });
